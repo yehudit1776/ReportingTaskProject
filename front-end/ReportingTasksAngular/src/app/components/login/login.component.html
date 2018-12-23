@@ -1,0 +1,34 @@
+<html>
+  <form [formGroup]="formGroup">
+<div class="box">
+  <h1 id="logintoregister">Login</h1>
+<div class="group">      
+  <input class="inputMaterial" type="text"  formControlName="userName">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>User name</label>
+  
+  <div *ngIf="formGroup.controls['userName'].errors&&formGroup.controls['userName'].touched">
+  <p-message  severity="error" [text]=err  *ngFor="let err of obj.values(formGroup.controls['userName'].errors)"></p-message>
+  </div>
+  </div>
+
+<div class="group">      
+  <input class="inputMaterial" type="password"  formControlName="userPassword">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>Password</label>
+  <div *ngIf="formGroup.controls['userPassword'].errors&&formGroup.controls['userPassword'].touched">
+        <p-message  severity="error" [text]=err  *ngFor="let err of obj.values(formGroup.controls['userPassword'].errors)"></p-message>
+  </div>
+
+  </div>
+
+ 
+  <a routerLink="forgetPassword"routerLinkActive="active">Forget Your Password?</a>
+<button id="buttonlogintoregister" (click)=submitLogin() [disabled]="formGroup.invalid">Login</button>
+  
+</div>
+</form>
+
+</html>

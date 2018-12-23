@@ -1,0 +1,91 @@
+
+<html>
+  <form [formGroup]="formGroup">
+<div class="box">
+  <h1 id="logintoregister">EditUser</h1>
+
+<label>Choose the user you wants to edit:</label>
+<div class="group">
+  <select class="inputMaterial" formControlName="EditUser" (change)="FillFields($event)">
+      <option></option>
+    <option  *ngFor="let item of allUsers" >{{item.UserName}}</option>
+    
+  </select>
+
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>The User</label>
+</div>
+
+
+  
+<div class="group">      
+  <input class="inputMaterial" type="text"  formControlName="UserName">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>UserName</label>
+  <div *ngIf="formGroup.controls['UserName'].errors&&formGroup.controls['UserName'].touched">
+    <p-message  severity="error" [text]=err *ngFor="let err of obj.values(formGroup.controls['UserName'].errors)"></p-message>
+</div>
+  </div>
+
+
+
+
+
+  <div class="group">      
+    <input class="inputMaterial" type="text"  formControlName="UserEmail">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>UserEmail</label>
+      
+    <div *ngIf="formGroup.controls['UserEmail'].errors&&formGroup.controls['UserEmail'].touched">
+      <p-message  severity="error" [text]=err *ngFor="let err of obj.values(formGroup.controls['UserEmail'].errors)"></p-message>
+  </div>
+    </div>
+
+
+
+
+  <div class="group">
+    <select class="inputMaterial" formControlName="TeamLeaderId">
+        <option></option>
+      <option  *ngFor="let item of teamLeaders" >{{item.UserName}}</option>
+      
+    </select>
+
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>TeamLeader</label>
+    
+  <div *ngIf="formGroup.controls['TeamLeaderId'].errors&&formGroup.controls['TeamLeaderId'].touched">
+    <p-message  severity="error" [text]=err *ngFor="let err of obj.values(formGroup.controls['TeamLeaderId'].errors)"></p-message>
+  </div>
+
+  </div>
+
+
+  <div class="group">
+    <select class="inputMaterial" formControlName="UserKindId">
+        <option></option>
+      <option  *ngFor="let item of userKinds" >{{item.KindUserName}}</option>
+      
+    </select>
+
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>UserKindId</label>
+    <div *ngIf="formGroup.controls['UserKindId'].errors&&formGroup.controls['UserKindId'].touched">
+      <p-message  severity="error" [text]=err *ngFor="let err of obj.values(formGroup.controls['UserKindId'].errors)"></p-message>
+    </div>
+  
+  </div>
+
+  
+
+<button id="buttonlogintoregister" (click)=submitEdit() [disabled]="formGroup.invalid">Edit</button>
+  
+</div>
+</form>
+<p-toast></p-toast>
+</html>
